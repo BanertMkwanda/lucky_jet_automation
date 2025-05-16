@@ -40,4 +40,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run main script
-        run: python main.py
+        run: python Lucky.py
