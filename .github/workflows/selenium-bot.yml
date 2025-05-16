@@ -39,5 +39,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run main script
+      - name: Run Lucky.py script
         run: python Lucky.py
