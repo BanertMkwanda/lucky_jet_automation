@@ -12,22 +12,7 @@ from datetime import datetime
 
 
 # create Chromeoptions instance
-options = webdriver.ChromeOptions()
-
-# adding argument to disable the AutomationControlled flag
-options.add_argument("--disable-blink-features=AutomationControlled")
-
-# exclude the collection of enable-automation switches
-options.add_experimental_option("excludeSwitches", ["enable-automation"])
-
-# turn-off userAutomationExtension
-options.add_experimental_option("useAutomationExtension", False)
-
-# setting the driver path and requesting a page
-driver = webdriver.Chrome(options=options)
-
-# changing the property of the navigator value for webdriver to undefined
-driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+options = webdriver.Chrome()
 
 driver.get("https://1woahn.com/?sub1=20250508-1337-1283-86d6-c3f070abf2d1&sub2=2210_1_win_net_in_reg")
 
