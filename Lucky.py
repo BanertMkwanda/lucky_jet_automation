@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import pickle
 from datetime import datetime
+from selenium.webdriver.chrome.options import Options
 
 # create Chromeoptions instance
 options = webdriver.ChromeOptions()
