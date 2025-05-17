@@ -11,7 +11,10 @@ import pickle
 from datetime import datetime
 
 # create Chromeoptions instance
-driver = webdriver.Chrome()
+options = webdriver.ChromeOptions()
+options.add_argument("--user-data-dir=/tmp/chrome-profile")
+
+driver = webdriver.Chrome(options=options)
 
 driver.get("https://1woahn.com/?sub1=20250508-1337-1283-86d6-c3f070abf2d1&sub2=2210_1_win_net_in_reg")
 
