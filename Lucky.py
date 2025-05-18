@@ -12,6 +12,7 @@ from datetime import datetime
 from selenium.webdriver.chrome.options import Options
 # create Chromeoptions instance
 
+m = input("enter: ")
 print("go")
 options = webdriver.ChromeOptions()
 
