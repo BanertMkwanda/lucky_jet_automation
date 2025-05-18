@@ -12,8 +12,7 @@ from datetime import datetime
 from selenium.webdriver.chrome.options import Options
 # create Chromeoptions instance
 
-m = input("enter: ")
-print("go")
+print("go", flush=True)
 options = webdriver.ChromeOptions()
 
 # adding argument to disable the AutomationControlled flag
