@@ -33,11 +33,10 @@ driver = webdriver.Chrome(options=options)
 
 driver.get("https://1woahn.com/?sub1=20250508-1337-1283-86d6-c3f070abf2d1&sub2=2210_1_win_net_in_reg")
 print("platform opened", flush=True)
-time.sleep(180)
 driver.save_screenshot("page.png")
 try:
     # Checking if the main page is available before loading login cookies
-    login = WebDriverWait(driver, 3000).until(
+    login = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH, "//span[normalize-space()='Login']"))
     )
 
