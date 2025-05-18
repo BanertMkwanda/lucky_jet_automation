@@ -41,3 +41,9 @@ jobs:
 
       - name: Run Lucky.py script
         run: python Lucky.py
+      
+      - name: Upload screenshot
+        uses: actions/upload-artifact@v3
+        with:
+          name: browser-screenshot
+          path: screenshot.png
