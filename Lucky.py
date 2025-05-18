@@ -10,11 +10,23 @@ from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import pickle
 from datetime import datetime
 from selenium.webdriver.chrome.options import Options
-
 # create Chromeoptions instance
 options = webdriver.ChromeOptions()
-options.add_argument("--user-data-dir=/tmp/chrome-profile")
 
+# adding argument to disable the AutomationControlled flag
+options.add_argument("--disable-blink-features=AutomationControlled")
+
+# exclude the collection of enable-automation switches
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
+
+# turn-off userAutomationExtension
+options.add_experimental_option("useAutomationExtension", False)
+
+options.add_argument("--headless")
+options.add_argument("--disable-gpu")
+options.add_argument("--no-sandbox")
+
+# setting the driver path and requesting a page
 driver = webdriver.Chrome(options=options)
 
 driver.get("https://1woahn.com/?sub1=20250508-1337-1283-86d6-c3f070abf2d1&sub2=2210_1_win_net_in_reg")
