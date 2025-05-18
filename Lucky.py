@@ -30,7 +30,7 @@ options.add_argument("--no-sandbox")
 driver = webdriver.Chrome(options=options)
 
 driver.get("https://1woahn.com/?sub1=20250508-1337-1283-86d6-c3f070abf2d1&sub2=2210_1_win_net_in_reg")
-
+print("platform opened")
 time.sleep(180)
 driver.save_screenshot("page.png")
 try:
