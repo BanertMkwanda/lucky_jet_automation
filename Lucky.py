@@ -12,8 +12,39 @@ from datetime import datetime
 from selenium.webdriver.chrome.options import Options
 # create Chromeoptions instance
 
+
+
+def get_public_ip():
+    try:
+        ip = requests.get('https://ifconfig.me', timeout=5).text.strip()
+        print(f"[+] Your public IP: {ip}")
+        return ip
+    except Exception as e:
+        print("[-] Failed to get public IP:", e)
+        return None
+
+# STEP 2: Whitelist your IP on ProxyScrape
+def whitelist_ip(ip, auth_token):
+    url = 'https://api.proxyscrape.com/v2/account/datacenter_shared/whitelist'
+    params = {
+        'auth': auth_token,
+        'type': 'add',
+        'ip[]': ip
+    }
+    try:
+        res = requests.get(url, params=params, timeout=5)
+        print(f"[+] Whitelisted IP {ip}")
+        return True
+    except Exception as e:
+        print("[-] Failed to whitelist IP:", e)
+        return False
+
+ip = get_public_ip()
+whitelist_ip(ip, "3bhjntie5dh55a0191vf")
+
+
 print("go", flush=True)
-options = webdriver.ChromeOptions()
+options = Options()
 
 # adding argument to disable the AutomationControlled flag
 options.add_argument("--disable-blink-features=AutomationControlled")
@@ -27,16 +58,18 @@ options.add_experimental_option("useAutomationExtension", False)
 options.add_argument("--headless")
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
-
+options.add_argument(f'--proxy-server=http://154.213.204.241:3129')
 # setting the driver path and requesting a page
 driver = webdriver.Chrome(options=options)
 
 driver.get("https://1woahn.com/?sub1=20250508-1337-1283-86d6-c3f070abf2d1&sub2=2210_1_win_net_in_reg")
+time.sleep(60)
+print(driver.title, flush=True)
 print("platform opened", flush=True)
 driver.save_screenshot("page.png")
 try:
     # Checking if the main page is available before loading login cookies
-    login = WebDriverWait(driver, 10).until(
+    login = WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.XPATH, "//span[normalize-space()='Login']"))
     )
 
