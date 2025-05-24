@@ -39,8 +39,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Lucky.py script
-        run: python Lucky.py
+      - name: Run address.py script
+        run: python address.py
       
       - name: Upload screenshot
         uses: actions/upload-artifact@v4
